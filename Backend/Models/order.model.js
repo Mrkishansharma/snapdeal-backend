@@ -8,7 +8,8 @@ const orderSchema = mongoose.Schema({
                 { 
                     product : { type : mongoose.Schema.Types.ObjectId, ref : ProductModel }, 
                     Quantity : { type : Number, required : true},
-                    Status : { type : String, required : true, enum : ["Confirmed", "Shipped", "Delivered", "Cancel"] } 
+                    Address : { type : String, required : true },
+                    Status : { type : String, required : true, enum : ["Confirmed", "Delivered", "Canceled"] } 
                 } 
             ]
 },{

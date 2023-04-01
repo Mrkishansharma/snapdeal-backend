@@ -9,7 +9,7 @@ const productRouter = require('./Routes/product.routes');
 
 const cartRouter = require('./Routes/cart.routes');
 
-// const orderRouter = require('./Routes/order.routes');
+const orderRouter = require('./Routes/order.routes');
 
 
 
@@ -25,7 +25,7 @@ app.use('/product',productRouter);
 
 app.use('/cart',cartRouter);
 
-// app.use('/order',orderRouter);
+app.use('/order',orderRouter);
 
 
 app.all('*', (req,res)=>{
@@ -38,11 +38,19 @@ app.all('*', (req,res)=>{
 
 
 app.listen(process.env.port, async (req,res)=>{
+
     try {
+
         await connection
+
         console.log(' DB Connected ');
+
     } catch (error) {
+
         console.log(error);
+
     }
+
     console.log(`Server is running on port ${process.env.port}`);
+    
 })
