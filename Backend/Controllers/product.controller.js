@@ -30,30 +30,36 @@ const getAllProducts = async (req,res)=>{
         if(priceSort){
 
             const products = await ProductModel.find( { Title : searchFilter } ).sort({Price:priceSort}).skip(limit*(page-1)).limit(limit);
+
             return res.status(200).send({
                 "Success" : true,
                 "Code" : 200,
-                "Products" : products 
+                "Products" : products ,
+                "msg":"Successfully get Products"
             })
 
         }else{
 
             const products = await ProductModel.find( { Title : searchFilter } ).skip(limit*(page-1)).limit(limit);
+            
             return res.status(200).send({
                 "Success" : true,
                 "Code" : 200,
-                "Products" : products 
+                "Products" : products ,
+                "msg":"Successfully get Products"
             })
 
         }
 
     } catch (error) {
+
         return res.status(400).send({
             "error": error.message,
             "msg": "Something Went Wrong!",
             "Code": 400,
             "Success": false
         })
+        
     }
 
 }

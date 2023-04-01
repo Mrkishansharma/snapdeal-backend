@@ -19,10 +19,11 @@ const adminAuth  = async (req,res,next)=>{
         if(decoded){
 
             const user1  = await UserModel.findById({_id:decoded.UserID});
-
+            
             if(user1.isAdmin){
 
-                req.body.UserID = decoded.UserID;
+                req.body.AdminID = decoded.UserID;
+
                 next()
 
             }else{
